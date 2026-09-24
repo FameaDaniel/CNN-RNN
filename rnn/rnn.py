@@ -5,9 +5,9 @@ from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 from tensorflow.keras import layers, models, optimizers, callbacks
 
-# Hyperparameters and Configuration
-TRAIN_DATA_PATH = "data/DailyDelhiClimateTrain.csv"
-TEST_DATA_PATH = "data/DailyDelhiClimateTest.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TRAIN_DATA_PATH = os.path.join(BASE_DIR, "data", "DailyDelhiClimateTrain.csv")
+TEST_DATA_PATH = os.path.join(BASE_DIR, "data", "DailyDelhiClimateTest.csv")
 FEATURES = ["meantemp", "humidity", "wind_speed", "meanpressure"]
 TARGET_COL = "meantemp"
 

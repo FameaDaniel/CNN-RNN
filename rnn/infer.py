@@ -13,8 +13,8 @@ def parse_args():
     parser.add_argument(
         "--data",
         type=str,
-        default="data/DailyDelhiClimateTest.csv",
-        help="Path to CSV file containing historical climate data."
+        default="data/sample_30days.csv",
+        help="Path to CSV file containing historical climate data (defaults to sample_30days.csv)."
     )
     parser.add_argument(
         "--model",

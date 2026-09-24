@@ -2,8 +2,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.h5
-!models/*.keras
-!models/*.joblib
+!rnn/models/*.keras
+!rnn/models/*.joblib
 .env
 .venv
 env/
