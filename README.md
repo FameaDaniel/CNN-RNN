@@ -2,8 +2,54 @@
 
 ## CNN
 
-<!-- La documentación del módulo CNN será agregada aquí por el compañero de equipo -->
+### 1. Estructura del Módulo CNN
+```
+cnn/
+├── data/
+│   ├── extract_samples.py           # Extracción de imágenes de prueba desde la caché
+│   └── fashion_samples/             # Muestra de imágenes extraídas en formato PNG
+├── models/
+│   ├── export_cnn.py                # Script de entrenamiento y exportación de artefactos
+│   └── cnn_fashion_mnist.keras      # Archivo binario con el modelo CNN entrenado
+├── tests/
+│   ├── baseline-accuracy/           # Evaluación de la línea base (Random Guessing)
+│   ├── testing-kfold/               # Test riguroso de partición y validación de data leakage
+│   ├── sesgo-varianza/              # Generador de curvas de pérdida y precisión (Underfitting/Overfitting)
+│   └── testing-unitario/            # Validación matemática de reducción espacial (Pooling)
+├── infer.py                         # Script de inferencia evaluando el conjunto de testing
+└── cnn.py                           # Definición de arquitectura y validación cruzada (Stratified K-Fold)
+```
 
+### 2. Ejecución de Inferencia y Tests
+
+#### A. Inferencia con el Modelo Entrenado (CLI)
+Para ejecutar la inferencia utilizando el modelo CNN exportado:
+
+```bash
+# Ejecución por defecto (utiliza cnn/data/fashion_samples/ y los pesos exportados)
+python cnn/infer.py
+```
+
+#### B. Tests y Utilidades
+```bash
+# Evaluar la línea base (Baseline de clasificación aleatoria)
+python cnn/tests/baseline-accuracy/test_random_baseline.py
+
+# Validar ausencia de fuga de información (Data Leakage) con Stratified K-Fold
+python cnn/tests/testing-kfold/test_group_kfold.py
+
+# Generar curvas de aprendizaje (Accuracy y Loss) para análisis de sesgo/varianza
+python cnn/tests/sesgo-varianza/plot_metrics.py
+
+# Ejecutar test de arquitectura (validación de dimensiones de capas convolucionales y pooling)
+python cnn/tests/testing-unitario/test_architectures.py
+
+# Extraer muestras visuales del dataset Fashion MNIST a formato físico (PNG)
+python cnn/data/extract_samples.py
+
+# Reentrenar y exportar el modelo (.keras) de forma limpia
+python cnn/models/export_cnn.py
+```
 
 ---
 
